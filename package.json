@@ -1,10 +1,10 @@
 {
   "name": "content_management_service_creato",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Manages posts and content scheduling",
+  "author": "Abhisekh Upadhaya",
   "private": true,
-  "license": "LICENSED",
+  "license": "MIT License",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
