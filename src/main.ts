@@ -19,6 +19,8 @@ async function bootstrap() {
   app.useGlobalFilters(new BadGatewayExceptionFilter());
 
   app.enableShutdownHooks();
-  await app.listen(process.env.PORT);
+  await app.listen(process.env.PORT, ()=> {
+    console.log(`Open: http://localhost:${process.env.PORT}`);
+  });
 }
 bootstrap();
