@@ -17,6 +17,8 @@ async function bootstrap() {
   app.useGlobalFilters(new ForbiddenExceptionFilter());
   app.useGlobalFilters(new UnauthorizedExceptionFilter());
   app.useGlobalFilters(new BadGatewayExceptionFilter());
+  
+  app.setGlobalPrefix('/api/v1', { exclude: ['/'] });
 
   app.enableShutdownHooks();
   await app.listen(process.env.PORT, ()=> {
