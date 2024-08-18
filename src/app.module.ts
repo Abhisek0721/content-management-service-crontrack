@@ -4,6 +4,7 @@ import { SocialMediaAccountModule } from '@modules/social_media_accounts/socialM
 import { AuthModule } from '@modules/auth/auth.module';
 import { UtilsModule } from '@utils/utils.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -16,5 +17,6 @@ import { MongooseModule } from '@nestjs/mongoose';
     AuthModule,
     UtilsModule
   ],
+  controllers: [AppController]
 })
 export class AppModule {}
