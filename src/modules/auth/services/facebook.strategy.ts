@@ -8,7 +8,7 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
     super({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: `${process.env.BASE_URL_CONTENT_SERVICE}/auth/facebook/callback`,
+      callbackURL: `${process.env.BASE_URL_CONTENT_SERVICE}/api/v1/auth/facebook/callback`,
       scope: [
         'email',
         'public_profile',
@@ -17,17 +17,21 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
         'pages_manage_posts',
       ],
       profileFields: ['id', 'displayName', 'photos', 'email'],
+      passReqToCallback: true,
     });
   }
 
   async validate(
+    req:any,
     accessToken: string,
     refreshToken: string,
     profile: any,
     done: Function,
   ) {
     try {
+      const workspaceId = req.query.state;
       const user = {
+        workspaceId,
         accessToken,
         refreshToken,
         profile,

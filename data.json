@@ -1,0 +1,124 @@
+{
+    "shortLivedAccessToken": "EAA3CN1o1dp8BOxwT1GNdWSFMIVdZCqulQ1b5xiW6bJg964lF1ctQQQ4DMAhVOFUb5nbntqOwOF5o28ZBz0gZBwToBkSmEBG150HRRbegeaGzXHZAqt9ZAKEWJtD7aNWZBZABfBKSQ2qCoZByHx9gCTsUAqHv7e5FDv0R66sHsItWGZBBu514KUtTTzl85aNjE0ly1xyGp1kFDucvVtfZB02Ee2fm1fBXcxRatIlQ5ra6G4IIZChEWsOZAvZCi",
+    "longLivedAccessToken": "EAA3CN1o1dp8BOwMkuGXGT66xcawBHPeyhhcI84nERot0LPYzfkfo49q9IlPjgNxrZAd2rbsZCF28ZCldmZBCLZCAjaN14qku3uLZBqUZB7dMvEX7zf0u99M1ZByEhrHBxPrTOrFf6DrkSsKWYRT9nJxZCHREUWQvoaacG7Ijx0MYtfy16KJvZBK35eBivZB",
+    "pages": [
+        {
+            "access_token": "EAA3CN1o1dp8BO4ZC10dL4eH9SeWYhTQ3YLYXZBb6Ao9k50W1ZBDhdEl30ZCkYdQNGKrKRiy66w1J2VwgwFu1fsNE5pxHcOzhQ8SyJUVwiEyyqHPvpaAXfuI36lDoHAQbGeFqY33JA72uZBfuoYyZCphsnLY75A24lUlUZAIaheRmCqZAzluEu0huKuwoWnUWTdoZD",
+            "category": "Information technology company",
+            "category_list": [
+                {
+                    "id": "1130035050388269",
+                    "name": "Information technology company"
+                }
+            ],
+            "name": "Varat-IT",
+            "id": "279066251961409",
+            "tasks": [
+                "ADVERTISE",
+                "ANALYZE",
+                "CREATE_CONTENT",
+                "MESSAGING",
+                "MODERATE",
+                "MANAGE"
+            ]
+        },
+        {
+            "access_token": "EAA3CN1o1dp8BO6uDR2GZBeZAEZCBExyntV1tOQ23rA6v1sZAW6VQheZC8buop7D2L2OdJjQUcWAg5Cpe6t1CeIZBdimdXHMxZArwcsJNOZB3xCxExmU44JnPZAd01JpZBihE0tyTJqZBpUuyRlzzfNtcAQDu0ZA6ZCaVzZBmhoHZADuvZA4C5tTfIxiwt1DZC2MvZCgWyNuwwZD",
+            "category": "Software",
+            "category_list": [
+                {
+                    "id": "2211",
+                    "name": "Software"
+                },
+                {
+                    "id": "2248",
+                    "name": "Consulting agency"
+                },
+                {
+                    "id": "179672275401610",
+                    "name": "Business consultant"
+                }
+            ],
+            "name": "Ace Solutions",
+            "id": "164707340049262",
+            "tasks": [
+                "ADVERTISE",
+                "ANALYZE",
+                "CREATE_CONTENT",
+                "MESSAGING",
+                "MODERATE",
+                "MANAGE"
+            ]
+        },
+        {
+            "access_token": "EAA3CN1o1dp8BOxqC8BYsqS5hC2G96hLjKWvYkKHRaRooFxOg9q9KMaNJW1UjuTue5nEZAwPrttqjBMtzsZA1Fuf2OxixrzIl0NkYaQuLCYWurpKsi8ybx3VxmFM3K6nH3IueAHZBwc6cOj9QiS5uCwjLWVuVmX2MXmUmbe12Kst20GsZBUqs7TQy2pBNMZA4ZD",
+            "category": "Software",
+            "category_list": [
+                {
+                    "id": "2211",
+                    "name": "Software"
+                }
+            ],
+            "name": "Coding Era",
+            "id": "101013968848166",
+            "tasks": [
+                "ADVERTISE",
+                "ANALYZE",
+                "CREATE_CONTENT",
+                "MESSAGING",
+                "MODERATE",
+                "MANAGE"
+            ]
+        },
+        {
+            "access_token": "EAA3CN1o1dp8BO7fmLOHYugjSPOaS6Kix0w7zuLkUxZAOlUTOGi6WKwMCUkqVZCpxvGezP671MsKTsOou01Ih04GjkOzbScA69n3eqpns7qipaOAZCa3bmMcGIlue99js22TtnAe0bZBmbIXTJIRz1dkf21AZASssxNhC70eFpjeTOXByblq57sQ5NVmpnjHEZD",
+            "category": "Games/toys",
+            "category_list": [
+                {
+                    "id": "2300",
+                    "name": "Games/toys"
+                }
+            ],
+            "name": "Clash Gamers",
+            "id": "100410789148565",
+            "tasks": [
+                "ADVERTISE",
+                "ANALYZE",
+                "CREATE_CONTENT",
+                "MESSAGING",
+                "MODERATE",
+                "MANAGE"
+            ]
+        }
+    ],
+    "profile": {
+        "id": "1780865545655638",
+        "displayName": "Abhisek Upadhaya",
+        "name": {},
+        "emails": [
+            {
+                "value": "abhisekhupadhaya43@gmail.com"
+            }
+        ],
+        "photos": [
+            {
+                "value": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1780865545655638&height=50&width=50&ext=1726616874&hash=AbYPWQFlR71BnuIibxvdZaYm"
+            }
+        ],
+        "provider": "facebook",
+        "_raw": "{\"id\":\"1780865545655638\",\"name\":\"Abhisek Upadhaya\",\"picture\":{\"data\":{\"height\":50,\"is_silhouette\":false,\"url\":\"https:\\/\\/platform-lookaside.fbsbx.com\\/platform\\/profilepic\\/?asid=1780865545655638&height=50&width=50&ext=1726616874&hash=AbYPWQFlR71BnuIibxvdZaYm\",\"width\":50}},\"email\":\"abhisekhupadhaya43\\u0040gmail.com\"}",
+        "_json": {
+            "id": "1780865545655638",
+            "name": "Abhisek Upadhaya",
+            "picture": {
+                "data": {
+                    "height": 50,
+                    "is_silhouette": false,
+                    "url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1780865545655638&height=50&width=50&ext=1726616874&hash=AbYPWQFlR71BnuIibxvdZaYm",
+                    "width": 50
+                }
+            },
+            "email": "abhisekhupadhaya43@gmail.com"
+        }
+    }
+}
