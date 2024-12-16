@@ -7,17 +7,20 @@ import {
   HttpExceptionFilter,
   UnauthorizedExceptionFilter,
 } from './filters/http-exception.filter';
-import * as fs from 'fs';
-import * as path from 'path';
+// import * as fs from 'fs';
+// import * as path from 'path';
 
 async function bootstrap() {
 
-  const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, "../localhost+2-key.pem")),
-    cert: fs.readFileSync(path.join(__dirname, "../localhost+2.pem")),
-  };
+  // const httpsOptions = {
+  //   key: fs.readFileSync(path.join(__dirname, "../localhost+2-key.pem")),
+  //   cert: fs.readFileSync(path.join(__dirname, "../localhost+2.pem")),
+  // };
 
-  const app = await NestFactory.create(AppModule, {httpsOptions});
+  const app = await NestFactory.create(
+    AppModule, 
+    // {httpsOptions}
+  );
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   // for error handeling on receiving request
