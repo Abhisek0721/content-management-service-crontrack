@@ -13,6 +13,7 @@ export enum ROLES {
 
 export const socialBaseUrl = {
   FACEBOOK: `https://graph.facebook.com`,
+  INSTAGRAM: `https://graph.instagram.com`
 }
 
 export enum SOCIAL_MEDIA_PLATFORM {

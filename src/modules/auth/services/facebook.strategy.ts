@@ -12,7 +12,6 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
       scope: [
         'email',
         'public_profile',
-        'instagram_basic',
         'pages_show_list',
         'pages_manage_posts',
       ],

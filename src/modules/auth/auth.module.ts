@@ -8,6 +8,7 @@ import { AuthService } from './services/auth.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SocialMediaAccount, SocialMediaAccountSchema } from '@modules/social_media_accounts/models/socialMediaAccount.model';
 import { DATABASE_NAME } from '@constants/index';
+import { InstagramStrategy } from './services/instagram.strategy';
 
 @Module({
   imports: [
@@ -27,6 +28,11 @@ import { DATABASE_NAME } from '@constants/index';
     ),
   ],
   controllers: [AuthController],
-  providers: [JwtStrategy, FacebookStrategy, AuthService]
+  providers: [
+    JwtStrategy,
+    AuthService,
+    FacebookStrategy,
+    InstagramStrategy
+  ]
 })
 export class AuthModule {}

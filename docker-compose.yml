@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  content-service-creato-dev:
+    container_name: content-service-creato-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - ${PORT}:${PORT}
+    restart: always
+    environment:
+      - BASE_URL_CONTENT_SERVICE=${BASE_URL_CONTENT_SERVICE}
+      - PORT=${PORT}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - DB_URI=${DB_URI}
+      - DB_NAME=${DB_NAME}
+      - FACEBOOK_APP_ID=${FACEBOOK_APP_ID}
+      - FACEBOOK_APP_SECRET=${FACEBOOK_APP_SECRET}
+      - INSTAGRAM_APP_ID=${INSTAGRAM_APP_ID}
+      - INSTAGRAM_APP_SECRET=${INSTAGRAM_APP_SECRET}
+    networks:
+      - shared_net
+
+networks:
+  shared_net:
+    external: true
