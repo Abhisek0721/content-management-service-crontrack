@@ -6,17 +6,21 @@ import { Response } from 'express';
 
 @Controller('social-auth')
 export class AuthController {
-    constructor(
-      private readonly authService: AuthService,
-      private readonly apiUtilsService: ApiUtilsService
-    ) { }
+  constructor(
+    private readonly authService: AuthService,
+    private readonly apiUtilsService: ApiUtilsService,
+  ) {}
 
   @Get('facebook')
   // @UseGuards(AuthGuard('facebook'))
-  async facebookLogin(@Query('workspaceId') workspaceId:string, @Res() res:Response) {
+  async facebookLogin(
+    @Query('workspaceId') workspaceId: string,
+    @Res() res: Response,
+  ) {
+    await this.authService.validateWorkspace(workspaceId);
     const facebookAuthUrl = `https://www.facebook.com/v10.0/dialog/oauth?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.BASE_URL_CONTENT_SERVICE}/api/v1/auth/facebook/callback&state=${workspaceId}&scope=email,public_profile,instagram_basic,instagram_content_publish,pages_show_list,pages_manage_posts`;
     // Redirect to Facebook for authentication
-    res.redirect(facebookAuthUrl);
+    return this.apiUtilsService.make_response({ facebookAuthUrl });
   }
 
   @Get('facebook/callback')
@@ -25,7 +29,10 @@ export class AuthController {
     const user = req.user;
     const shortLivedAccessToken = user.accessToken;
     const workspaceId = user.workspaceId;
-    const data = await this.authService.saveFacebookAccessToken(workspaceId, shortLivedAccessToken);
+    const data = await this.authService.saveFacebookAccessToken(
+      workspaceId,
+      shortLivedAccessToken,
+    );
     return this.apiUtilsService.make_response(data);
   }
 
