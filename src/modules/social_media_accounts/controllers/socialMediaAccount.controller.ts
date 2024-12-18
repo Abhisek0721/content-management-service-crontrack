@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 
-@Controller()
+@Controller('social-media-account')
 export class SocialMediaAccountController {
     @Get('facebook-redirect')
     facebookRedirect() {
