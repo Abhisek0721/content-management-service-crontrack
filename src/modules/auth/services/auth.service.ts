@@ -66,7 +66,7 @@ export class AuthService {
         );
       }
       const response = await axios.get(
-        `${this.configService.get<string>('BASE_URL_CONTENT_SERVICE')}/api/v1/workspace/validate/${workspaceId}`,
+        `${this.configService.get<string>('BASE_URL_IDENTITY_SERVICE')}/api/v1/workspace/validate/${workspaceId}`,
       );
       const check_workspace = response.data?.data?.check_workspace;
       if (!check_workspace) {
