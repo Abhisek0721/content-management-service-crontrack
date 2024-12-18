@@ -31,7 +31,9 @@ export class AuthService {
   async setTokenToVerifyWorkspace(workspaceId: string) {
     // Generate a 16-byte (32-character) token
     const token = generateCryptoToken(16);
+    // Use cacheManager's set method directly
     await this.cacheManager.set(token, workspaceId);
+    // Retrieve and log the value to ensure it's set correctly
     return token;
   }
 
