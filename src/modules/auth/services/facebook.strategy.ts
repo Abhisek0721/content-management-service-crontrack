@@ -35,7 +35,6 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
         refreshToken,
         profile,
       };
-      console.log(user, 'fb-user')
       done(null, user);
     } catch (err) {
       Logger.error(err?.stack);

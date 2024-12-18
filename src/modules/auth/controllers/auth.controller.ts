@@ -3,12 +3,14 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from '../services/auth.service';
 import { ApiUtilsService } from '@utils/utils.service';
 import { Response } from 'express';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('social-auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private readonly apiUtilsService: ApiUtilsService,
+    private readonly configService: ConfigService,
   ) {}
 
   @Get('facebook')
@@ -24,7 +26,7 @@ export class AuthController {
 
   @Get('facebook/callback')
   @UseGuards(AuthGuard('facebook'))
-  async facebookCallback(@Req() req) {
+  async facebookCallback(@Req() req, @Res() res: Response) {
     const user = req.user;
     const shortLivedAccessToken = user.accessToken;
     const workspaceId = user.workspaceId;
@@ -32,7 +34,7 @@ export class AuthController {
       workspaceId,
       shortLivedAccessToken,
     );
-    return this.apiUtilsService.make_response(data);
+    return res.redirect(`${this.configService.get<string>('FRONTEND_BASE_URL')}/social-auth?data=${JSON.stringify(data)}`);
   }
 
   @Get('instagram')
