@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-facebook';
 
@@ -35,8 +35,10 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
         refreshToken,
         profile,
       };
+      console.log(user, 'fb-user')
       done(null, user);
     } catch (err) {
+      Logger.error(err?.stack);
       done(err, false);
     }
   }
