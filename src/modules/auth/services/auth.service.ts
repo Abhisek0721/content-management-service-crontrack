@@ -62,7 +62,7 @@ export class AuthService {
     try {
       if (!workspaceId) {
         throw new BadRequestException(
-          'workspaceId is misssion in query params',
+          'workspaceId is missing in query params',
         );
       }
       const response = await axios.get(
@@ -72,6 +72,7 @@ export class AuthService {
       if (!check_workspace) {
         throw new NotFoundException('Invalid workspaceId');
       }
+      return;
     } catch (error) {
       if (error.statusCode === 500) {
         Logger.error(error?.stack);

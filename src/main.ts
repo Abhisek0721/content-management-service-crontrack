@@ -33,7 +33,7 @@ async function bootstrap() {
 
   app.enableShutdownHooks();
   await app.listen(process.env.PORT, ()=> {
-    console.log(`Open: https://localhost:${process.env.PORT}`);
+    console.log(`Open: http://localhost:${process.env.PORT}`);
   });
 }
 bootstrap();

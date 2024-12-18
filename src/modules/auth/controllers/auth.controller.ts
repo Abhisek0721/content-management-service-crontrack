@@ -15,7 +15,6 @@ export class AuthController {
   // @UseGuards(AuthGuard('facebook'))
   async facebookLogin(
     @Query('workspaceId') workspaceId: string,
-    @Res() res: Response,
   ) {
     await this.authService.validateWorkspace(workspaceId);
     const redirectAuthUrl = `https://www.facebook.com/v10.0/dialog/oauth?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.BASE_URL_CONTENT_SERVICE}/api/v1/auth/facebook/callback&state=${workspaceId}&scope=email,public_profile,instagram_basic,instagram_content_publish,pages_show_list,pages_manage_posts`;
