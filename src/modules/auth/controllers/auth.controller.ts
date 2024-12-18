@@ -17,7 +17,7 @@ export class AuthController {
     @Query('workspaceId') workspaceId: string,
   ) {
     await this.authService.validateWorkspace(workspaceId);
-    const redirectAuthUrl = `https://www.facebook.com/v10.0/dialog/oauth?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.BASE_URL_CONTENT_SERVICE}/api/v1/auth/facebook/callback&state=${workspaceId}&scope=email,public_profile,instagram_basic,instagram_content_publish,pages_show_list,pages_manage_posts`;
+    const redirectAuthUrl = `https://www.facebook.com/v10.0/dialog/oauth?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.BASE_URL_CONTENT_SERVICE}/api/v1/social-auth/facebook/callback&state=${workspaceId}&scope=email,public_profile,instagram_basic,instagram_content_publish,pages_show_list,pages_manage_posts`;
     // Redirect to Facebook for authentication
     return this.apiUtilsService.make_response({ redirectAuthUrl });
   }
