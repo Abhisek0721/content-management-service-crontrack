@@ -28,9 +28,9 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
     done: Function,
   ) {
     try {
-      const workspaceId = req.query.state;
+      const token = req.query.state;
       const user = {
-        workspaceId,
+        token,
         accessToken,
         refreshToken,
         profile,

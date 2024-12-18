@@ -1,8 +1,12 @@
 export type AdditionDetailsOfSocialMediaType = {
-    pageId?: string;
-    pageName?: string;
-    pageCategory?: string;
-    username?: string;
+    // user data (account added by in the workspace)
     userId?: string;
-    profilePicture?: string;
+    // instagram account
+    instagramUsername?: string;
+    instagramProfilePicture?: string;
+    // facebook page
+    facebookPageId?: string;
+    facebookPageName?: string;
+    facebookPageCategory?: string;
+    facebookProfilePicture?: string;
 }

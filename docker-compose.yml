@@ -22,6 +22,21 @@ services:
     networks:
       - shared_net
 
+  content-redis-service-dev:
+    container_name: content-redis-service-dev
+    image: redis:6.2.6-alpine
+    restart: always
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    volumes:
+      - redis_data:/data # <-- Add this to persist Redis data
+    networks:
+      - shared_net
+
+volumes:
+  redis_data:
+
+
 networks:
   shared_net:
     external: true

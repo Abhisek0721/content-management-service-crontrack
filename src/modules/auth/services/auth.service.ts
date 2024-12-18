@@ -6,6 +6,7 @@ import {
 import { SocialMediaAccount } from '@modules/social_media_accounts/models/socialMediaAccount.model';
 import {
   BadRequestException,
+  Inject,
   Injectable,
   Logger,
   NotFoundException,
@@ -14,6 +15,9 @@ import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/mongoose';
 import axios from 'axios';
 import { Model } from 'mongoose';
+import { generateCryptoToken } from '../utils';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +25,15 @@ export class AuthService {
     @InjectModel(SocialMediaAccount.name, DATABASE_NAME)
     private socialMediaAccountModel: Model<SocialMediaAccount>,
     private readonly configService: ConfigService,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
+
+  async setTokenToVerifyWorkspace(workspaceId: string) {
+    // Generate a 16-byte (32-character) token
+    const token = generateCryptoToken(16);
+    await this.cacheManager.set(token, workspaceId);
+    return token;
+  }
 
   // Function to exchange short-lived facebook token for a long-lived token
   async exchangeForLongLivedFacebookToken(shortLivedToken: string) {
@@ -61,9 +73,7 @@ export class AuthService {
   async validateWorkspace(workspaceId: string) {
     try {
       if (!workspaceId) {
-        throw new BadRequestException(
-          'workspaceId is missing in query params',
-        );
+        throw new BadRequestException('workspaceId is missing in query params');
       }
       const response = await axios.get(
         `${this.configService.get<string>('BASE_URL_IDENTITY_SERVICE')}/api/v1/workspace/validate/${workspaceId}`,
@@ -81,8 +91,12 @@ export class AuthService {
     }
   }
 
-  async saveFacebookAccessToken(workspaceId: string, accessToken: string) {
+  async saveFacebookAccessToken(token: string, accessToken: string) {
     try {
+      const workspaceId = this.cacheManager.get(token);
+      if (!workspaceId) {
+        throw new BadRequestException('Invalid Token');
+      }
       const longLivedAccessToken =
         await this.exchangeForLongLivedFacebookToken(accessToken);
       const pagesUrl = `${socialBaseUrl.FACEBOOK}/me/accounts?access_token=${accessToken}`;
@@ -107,7 +121,7 @@ export class AuthService {
           upsert: true,
         },
       );
-      return { workspaceId, platform: SOCIAL_MEDIA_PLATFORM.FACEBOOK, pages };
+      return { token, platform: SOCIAL_MEDIA_PLATFORM.FACEBOOK, pages };
     } catch (error) {
       console.log(error?.stack);
       throw error;

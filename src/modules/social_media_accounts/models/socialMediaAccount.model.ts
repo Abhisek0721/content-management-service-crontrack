@@ -15,7 +15,18 @@ export class SocialMediaAccount extends Document {
   longLivedAccessToken: string;
 
   @Prop({
-    type: Object,
+    type: {
+      // user data (account added by in the workspace)
+      userId: { type: String, required: false },
+      // instagram account
+      instagramUsername: { type: String, required: false },
+      instagramProfilePicture: { type: String, required: false },
+      // facebook page
+      facebookPageId: { type: String, required: false },
+      facebookPageName: { type: String, required: false },
+      facebookPageCategory: { type: String, required: false },
+      facebookProfilePicture: { type: String, required: false },
+    },
     required: false
   })
   additionalDetails: AdditionDetailsOfSocialMediaType
