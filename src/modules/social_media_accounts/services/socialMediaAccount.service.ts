@@ -51,7 +51,10 @@ export class SocialMediaAccountService {
             },
           },
         },
-      );
+        {
+          new: true
+        }
+      ).select("-longLivedAccessToken");
 
       return facebookData;
     } catch (error) {
