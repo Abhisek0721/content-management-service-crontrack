@@ -95,7 +95,7 @@ export class AuthService {
 
   async saveFacebookAccessToken(token: string, accessToken: string) {
     try {
-      const workspaceId = this.cacheManager.get(token);
+      const workspaceId = await this.cacheManager.get(token);
       if (!workspaceId) {
         throw new BadRequestException('Invalid Token');
       }
