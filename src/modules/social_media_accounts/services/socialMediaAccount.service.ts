@@ -21,7 +21,7 @@ export class SocialMediaAccountService {
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
-  async getWorkspaceIdFromToken(token: string) {
+  private async getWorkspaceIdFromToken(token: string) {
     const workspaceId = await this.cacheManager.get(token);
     return workspaceId;
   }
@@ -35,30 +35,48 @@ export class SocialMediaAccountService {
         throw new BadRequestException('Token is invalid or expired!');
       }
       await this.cacheManager.del(addFacebookPageDto.token);
-      const facebookData = await this.socialMediaAccountModel.findOneAndUpdate(
-        {
-          workspaceId,
-        },
-        {
-          $set: {
-            platform: SOCIAL_MEDIA_PLATFORM.FACEBOOK,
-            additionalDetails: {
-              userId: user.user_id,
-              facebookPageId: addFacebookPageDto.pageId,
-              facebookPageName: addFacebookPageDto.pageName,
-              facebookPageCategory: addFacebookPageDto.pageCategory,
-              facebookProfilePicture: addFacebookPageDto.profilePicture,
+      const facebookData = await this.socialMediaAccountModel
+        .findOneAndUpdate(
+          {
+            workspaceId,
+          },
+          {
+            $set: {
+              platform: SOCIAL_MEDIA_PLATFORM.FACEBOOK,
+              additionalDetails: {
+                userId: user.user_id,
+                facebookPageId: addFacebookPageDto.pageId,
+                facebookPageName: addFacebookPageDto.pageName,
+                facebookPageCategory: addFacebookPageDto.pageCategory,
+                facebookProfilePicture: addFacebookPageDto.profilePicture,
+              },
             },
           },
-        },
-        {
-          new: true
-        }
-      ).select("-longLivedAccessToken");
+          {
+            new: true,
+          },
+        )
+        .select('-longLivedAccessToken');
 
       return facebookData;
     } catch (error) {
-      if (error?.statusCode === 500) {
+      if (error?.statusCode === 500 || error?.status === 500) {
+        Logger.error(error?.stack);
+      }
+      throw error;
+    }
+  }
+
+  async getAllSocialAccounts(workspaceId: string) {
+    try {
+      const socialAccounts = await this.socialMediaAccountModel
+        .find({
+          workspaceId,
+        })
+        .select('-longLivedAccessToken');
+      return socialAccounts;
+    } catch (error) {
+      if (error?.statusCode === 500 || error?.status === 500) {
         Logger.error(error?.stack);
       }
       throw error;
